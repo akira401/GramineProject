@@ -190,6 +190,17 @@ static bool libos_xstate_copy(struct libos_xstate* dst, const struct libos_xstat
 noreturn void restore_child_context_after_clone(struct libos_context* context) {
     assert(context->regs);
 
+    /* 追加: 復元直前のレジスタ値を確認 */
+    log_debug("[DEBUG] restore_child_context: rip=%p rsp=%p tls=0x%lx",
+              (void*)context->regs->rip, (void*)context->regs->rsp, context->tls);
+
+   /* 追加: スタック内容を確認 */
+    log_debug("[DEBUG] stack content at rsp: %016lx %016lx %016lx %016lx",
+              ((uint64_t*)context->regs->rsp)[0],
+              ((uint64_t*)context->regs->rsp)[1],
+              ((uint64_t*)context->regs->rsp)[2],
+              ((uint64_t*)context->regs->rsp)[3]);
+
     /* Set 0 as child return value. */
     context->regs->rax = 0;
 
@@ -198,7 +209,32 @@ noreturn void restore_child_context_after_clone(struct libos_context* context) {
     set_tls(context->tls);
 
     PAL_CONTEXT* regs = context->regs;
+
+log_debug("RIP=%p", (void*)regs->rip);
+log_debug("RSP=%p", (void*)regs->rsp);
+
+uint64_t* sp = (uint64_t*)regs->rsp;
+log_debug("return addr=%p", (void*)sp[0]);
+log_debug("sp[1]=0x%lx", sp[1]);
+log_debug("sp[2]=0x%lx", sp[2]);
+
     context->regs = NULL;
+
+
+/* 追加 */
+uint64_t restore_end_time = 0;
+int ret = PalSystemTimeQuery(&restore_end_time);
+
+if (ret >= 0 && g_pal_public_state->migration_start_time != 0) {
+    log_always("[measurement] migration_start_time = %lu usec",
+               g_pal_public_state->migration_start_time);
+
+    log_always("[measurement] restore_end_time = %lu usec",
+               restore_end_time);
+
+    log_always("[measurement] elapsed = %lu usec",
+               restore_end_time - g_pal_public_state->migration_start_time);
+}
 
     return_from_syscall(regs);
 }

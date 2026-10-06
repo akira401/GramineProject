@@ -59,6 +59,8 @@ static ssize_t dev_random_read(struct libos_handle* hdl, void* buf, size_t count
 static int dev_tty_open(struct libos_handle* hdl, struct libos_dentry* dent, int flags) {
     __UNUSED(dent);
 
+log_debug("dev_tty_open called");
+
     char* uri = strdup(URI_PREFIX_CONSOLE);
     if (!uri)
         return -ENOMEM;

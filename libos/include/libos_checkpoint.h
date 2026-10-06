@@ -387,3 +387,11 @@ int create_process_and_send_checkpoint(migrate_func_t migrate_func,
  * Called in child process during initialization.
  */
 int receive_checkpoint_and_restore(struct checkpoint_hdr* hdr);
+
+int save_checkpoint(const char* cpfile, const char* rmfile, migrate_func_t migrate_func,
+                    struct libos_process* process_description,
+                    struct libos_thread* thread_description, ...);
+
+long libos_kernel_write(int fd, const void* buf, size_t count);
+
+int receive_checkpoint_and_restore_nohandle(struct checkpoint_hdr* hdr);

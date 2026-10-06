@@ -145,6 +145,12 @@ struct pal_public_state {
     PAL_HANDLE first_thread;     /*!< handle of first thread */
     int log_level;               /*!< what log messages to enable */
 
+    /* restore / migration */
+    bool restore_nohandle;
+
+    /*追加*/
+    uint64_t migration_start_time;
+
     /*
      * Memory layout
      */

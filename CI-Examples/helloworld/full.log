@@ -1,0 +1,236 @@
+(libos_init.c:387:libos_init) debug: Gramine was built from commit: ff71d7afea730dffd56a97af39bb6a73ee6c7662
+(libos_init.c:389:libos_init) debug: Host: Linux
+(libos_context.c:70:libos_xstate_init) debug: LibOS xsave_enabled 1, xsave_size 0x2b00(11008), xsave_features 0x602e7
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0xffffffffff600000-0xffffffffff601000 ([vsyscall]) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffffde000-0x7ffffffff000 ([stack]) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffffdd000-0x7ffffffde000 (stack guard) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff9c000-0x7ffffffdd000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff8b000-0x7ffffff9c000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff88000-0x7ffffff8b000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff87000-0x7ffffff88000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff86000-0x7ffffff87000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff85000-0x7ffffff86000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff84000-0x7ffffff85000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff83000-0x7ffffff84000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff81000-0x7ffffff83000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff7f000-0x7ffffff81000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff7e000-0x7ffffff7f000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff7b000-0x7ffffff7e000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff78000-0x7ffffff7b000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffffff76000-0x7ffffff78000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7fffffbd2000-0x7fffffce9000 (PAL internal me) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffff7ffc000-0x7ffff7fff000 () bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffff7ff9000-0x7ffff7ffc000 (/usr/local/lib/) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffff7fba000-0x7ffff7ff9000 (/usr/local/lib/) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffff7fb8000-0x7ffff7fba000 ([vdso]) bookkeeped
+(libos_vma.c:664:init_vma) debug: Initial VMA region 0x7ffff7fb4000-0x7ffff7fb8000 ([vvar]) bookkeeped
+(libos_vma.c:695:init_vma) debug: ASLR top address adjusted to 0x583a9248c000
+(libos_init.c:420:libos_init) debug: LibOS loaded at 0x7fffffbd2000, ready to initialize
+(libos_init.c:593:create_pipe) debug: Creating pipe: pipe.srv:559382710765814296/a5260873b60186bbf65be37cb8adc2170c867cea20f4e0d74665b6ddd4e25b7a
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "file:." (chroot) under /
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "proc" (pseudo) under /proc
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "dev" (pseudo) under /dev
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "sys" (pseudo) under /sys
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc" (chroot) under /lib
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "file:helloworld" (chroot) under /helloworld
+(libos_init.c:593:create_pipe) [P1:T1:helloworld] debug: Creating pipe: pipe.srv:559382710765814296/2cf5413e4e0682e7dd5ddeafe0f65cba9d5e421bc23ac3e2faa3a7c6130b6aab
+(libos_init.c:593:create_pipe) [P1:T1:helloworld] debug: Creating pipe: pipe.srv:559382710765814296/f4bff82253fce5e0d2cccc928d9f8efc67a76286fe6fedc94fbb3f2152c9c1e3
+(libos_init.c:308:init_stack) [P1:T1:helloworld] debug: Allocated stack at 0x583a9244c000 (size = 0x40000)
+(libos_async.c:126:libos_async_worker) [P1:libos] debug: Async worker thread started
+(libos_rtld.c:853:load_elf_object) [P1:T1:helloworld] debug: loading "file:helloworld"
+(libos_debug.c:121:append_r_debug) [P1:T1:helloworld] debug: adding file:helloworld at 0x583a92446000
+(libos_rtld.c:907:find_interp) [P1:T1:helloworld] debug: searching for interpreter: /lib/ld-linux-x86-64.so.2
+(libos_rtld.c:853:load_elf_object) [P1:T1:helloworld] debug: loading "file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2"
+(libos_debug.c:121:append_r_debug) [P1:T1:helloworld] debug: adding file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2 at 0x583a9240e000
+(libos_init.c:593:create_pipe) [P1:T1:helloworld] debug: Creating pipe: pipe.srv:559382710765814296/1
+(libos_init.c:593:create_pipe) [P1:T1:helloworld] debug: Creating pipe: pipe.srv:559382710765814296/ee3c8f9c3933d8a308e7e1ccdf07a10d7789ab94bb7b56a2e70e241c2ddff1db
+(libos_init.c:538:libos_init) [P1:T1:helloworld] debug: LibOS initialized
+(libos_debug.c:121:append_r_debug) [P1:T1:helloworld] debug: adding file:[vdso_libos] at 0x583a9240d000
+(libos_ipc_worker.c:372:ipc_worker_wrapper) [P1:libos] debug: IPC worker started
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_rtld.c:1053:register_library) [P1:T1:helloworld] debug: glibc register library /lib/libc.so.6 loaded at 0x583a92232000
+(libos_debug.c:121:append_r_debug) [P1:T1:helloworld] debug: adding file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6 at 0x583a92232000
+(libos_parser.c:1672:warn_unsupported_syscall) [P1:T1:helloworld] warning: Unsupported system call rseq
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_clone.c:130:libos_syscall_save) [P1:T1:helloworld] debug: save syscall boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_checkpoint.c:642:save_checkpoint) [P1:T1:helloworld] debug: Opening checkpoint file at path: cp.txt
+(libos_checkpoint.c:643:save_checkpoint) [P1:T1:helloworld] debug: Opening reserved memory file at path: rm.txt
+(libos_checkpoint.c:549:cp_alloc) [P1:T1:helloworld] debug: allocating checkpoint store (size = 67108864, reserve = 33554432)
+(libos_ipc.c:383:cp_process_ipc_ids) [P1:T1:helloworld] debug: BEGIN_CP_FUNC(process_ipc_ids): called.
+(libos_clone.c:123:migrate_fork) [P1:T1:helloworld] debug: complete checkpointing data
+(libos_checkpoint.c:698:save_checkpoint) [P1:T1:helloworld] debug: checkpoint of 57736 bytes created
+(libos_checkpoint.c:716:save_checkpoint) [P1:T1:helloworld] debug: cpstore.base = 0x7ffff9bd2000 (0x7ffff9bd2000)
+(libos_checkpoint.c:717:save_checkpoint) [P1:T1:helloworld] debug: cpstore.offset = 57736
+(libos_checkpoint.c:718:save_checkpoint) [P1:T1:helloworld] debug: cpstore.bound = 67108864
+(libos_checkpoint.c:719:save_checkpoint) [P1:T1:helloworld] debug: mem_entries_cnt = 141
+(libos_checkpoint.c:720:save_checkpoint) [P1:T1:helloworld] debug: palhdl_entries_cnt = 7
+(libos_checkpoint.c:721:save_checkpoint) [P1:T1:helloworld] debug: first_mem_entry = 0x7ffff9bd9480, last_palhdl_entry = 0x7ffff9bde208
+(libos_checkpoint.c:723:save_checkpoint) [P1:T1:helloworld] debug: hdr.addr = 0x7ffff9bd2000, hdr.size = 57736
+(libos_checkpoint.c:726:save_checkpoint) [P1:T1:helloworld] debug: checkpoint header write.(bytes:56)
+(libos_checkpoint.c:735:save_checkpoint) [P1:T1:helloworld] debug: checkpoint data write.(bytes:57736)
+(libos_checkpoint.c:804:save_checkpoint) [P1:T1:helloworld] debug: reserved_mem_ranges_len write.(bytes:8)
+(libos_checkpoint.c:815:save_checkpoint) [P1:T1:helloworld] debug: reserved_mem_ranges write.(bytes:368)
+(libos_init.c:593:create_pipe) [P1:T1:helloworld] debug: Creating pipe: pipe.srv:559382710765814296/7e646b6474068e2b3814a5684572ea741c35deaaf800128bd36dc77b15a3ee75
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_checkpoint.c:549:cp_alloc) [P1:T1:helloworld] debug: allocating checkpoint store (size = 67108864, reserve = 33554432)
+(libos_checkpoint.c:549:cp_alloc) [P1:T1:helloworld] debug: allocating checkpoint store (size = 33554432, reserve = 16777216)
+(libos_checkpoint.c:549:cp_alloc) [P1:T1:helloworld] debug: allocating checkpoint store (size = 16777216, reserve = 8388608)
+(libos_ipc.c:383:cp_process_ipc_ids) [P1:T1:helloworld] debug: BEGIN_CP_FUNC(process_ipc_ids): called.
+(libos_clone.c:123:migrate_fork) [P1:T1:helloworld] debug: complete checkpointing data
+(libos_checkpoint.c:895:create_process_and_send_checkpoint) [P1:T1:helloworld] debug: checkpoint of 55576 bytes created
+(libos_checkpoint.c:306:send_checkpoint_on_stream) [P1:T1:helloworld] debug: send_checkpoint_on_stream: cpstore write succeeded, calling send_memory_on_stream
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92487000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92486000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92485000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92484000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92483000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92482000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92481000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92480000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9247f000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9247e000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9247d000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9247c000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9247b000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9247a000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92479000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92478000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92477000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92476000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92475000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92474000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92473000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92472000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92471000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92470000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9246f000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9246e000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9246d000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9246c000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9246b000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9246a000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92469000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92468000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92467000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92466000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92465000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92464000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92463000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92462000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92461000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92460000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9245f000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9245e000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9245d000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9245c000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9245b000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9245a000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92459000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92458000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92457000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92456000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92455000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92454000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92453000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92452000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92451000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92450000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9244f000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9244e000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9244d000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9244c000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92579000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92578000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92577000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92576000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92575000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92574000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92573000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92572000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92571000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92570000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9256f000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9256e000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9256d000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9256c000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9256b000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9256a000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92569000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92568000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92567000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92566000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92565000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92564000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92563000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92562000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92561000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92560000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9255f000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9255e000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9255d000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9255c000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9255b000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a9255a000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:273:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: skipping inaccessible entry addr=0x583a92559000 size=4096 prot=3 ret=Permission denied (EACCES)
+(libos_checkpoint.c:287:send_memory_on_stream) [P1:T1:helloworld] debug: send_memory_on_stream: finished ret=0
+(libos_checkpoint.c:944:create_process_and_send_checkpoint) [P1:T1:helloworld] error: failed sending PAL handles as part of checkpoint: Broken pipe (EPIPE)
+(libos_checkpoint.c:995:create_process_and_send_checkpoint) [P1:T1:helloworld] error: process creation failed
+(libos_open.c:80:libos_syscall_write) [P1:T1:helloworld] debug: libos_syscall_write boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+Hello, world
+save syscall successed.
+fork failed
+(libos_exit.c:205:libos_syscall_exit_group) [P1:T1:helloworld] debug: ---- exit_group (returning 1)
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_vma.c:199:_traverse_vmas_in_range) [P1:T1:helloworld] debug: _traverse_vmas_in_range boot.
+(libos_vma.c:1317:is_in_adjacent_user_vmas) [P1:T1:helloworld] debug: is_in_adjacent_user_vmas boot.
+(libos_fs_lock.c:785:file_lock_clear_pid) [P1:T1:helloworld] debug: clearing file (POSIX) locks for pid 1
+(libos_sync_client.c:331:shutdown_sync_client) [P1:T1:helloworld] debug: sync client shutdown: closing handles
+(libos_sync_client.c:346:shutdown_sync_client) [P1:T1:helloworld] debug: sync client shutdown: waiting for confirmation
+(libos_sync_client.c:359:shutdown_sync_client) [P1:T1:helloworld] debug: sync client shutdown: finished
+(libos_async.c:293:libos_async_worker) [P1:libos] debug: Async worker thread terminated
+(libos_ipc_worker.c:285:ipc_worker_main) [P1:libos] debug: IPC worker: exiting worker thread
+(libos_exit.c:51:libos_clean_and_exit) [P1:T1:helloworld] debug: process 1 exited with status 1

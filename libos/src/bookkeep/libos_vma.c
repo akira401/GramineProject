@@ -196,6 +196,9 @@ static bool _traverse_vmas_in_range(uintptr_t begin, uintptr_t end, bool use_onl
     assert(spinlock_is_locked(&vma_tree_lock));
     assert(begin <= end);
 
+/*
+    log_debug("_traverse_vmas_in_range boot.");
+*/  
     if (begin == end)
         return true;
 
@@ -1313,6 +1316,9 @@ bool is_in_adjacent_user_vmas(const void* addr, size_t length, int prot) {
                                                  adj_visitor, &ctx);
     spinlock_unlock(&vma_tree_lock);
 
+/*
+    log_debug("is_in_adjacent_user_vmas boot.");
+*/
     return is_continuous && ctx.is_ok;
 }
 
@@ -1942,11 +1948,17 @@ BEGIN_CP_FUNC(vma) {
 }
 END_CP_FUNC(vma)
 
+/* ここ */
 BEGIN_RS_FUNC(vma) {
     struct libos_vma_info* vma = (void*)(base + GET_CP_FUNC_ENTRY());
     bool remap_from_file = (bool)GET_CP_ENTRY(ADDR);
+
+    log_debug("restoring vma: addr=%p length=%zu comment=%s remap_from_file=%d file=%p",
+              vma->addr, vma->length, vma->comment, remap_from_file, vma->file);
+
     CP_REBASE(vma->file);
 
+log_debug("restore_vma: uri=%s", vma->file ? (vma->file->uri ? vma->file->uri : "(null)") : "(no file)");
     int ret = bkeep_mmap_fixed(vma->addr, vma->length, vma->prot, vma->flags | MAP_FIXED, vma->file,
                                vma->file_offset, vma->comment);
     if (ret < 0)
@@ -1958,13 +1970,39 @@ BEGIN_RS_FUNC(vma) {
         struct libos_fs* fs = vma->file->fs;
         get_handle(vma->file);
 
+        log_debug("get_handle(vma->file) exec.");
+
         if (remap_from_file) {
             /* Parent did not send file-backed memory region, need to mmap file contents. */
             if (!fs || !fs->fs_ops || !fs->fs_ops->mmap)
                 return -EINVAL;
 
+            if (g_pal_public_state->restore_nohandle) {
+                if (!vma->file->uri) {
+                    log_error("restore_vma: cannot reopen file-backed vma without uri");
+                    return -EINVAL;
+                }
+
+                PAL_HANDLE reopened = NULL;
+                int open_ret = PalStreamOpen(vma->file->uri, PAL_ACCESS_RDONLY, 0,
+                                             PAL_CREATE_NEVER, 0, &reopened);
+                if (open_ret < 0) {
+                    log_error("restore_vma: failed to reopen %s: %s", vma->file->uri,
+                              pal_strerror(open_ret));
+                    return pal_to_unix_errno(open_ret);
+                }
+
+                vma->file->pal_handle = reopened;
+
+                log_debug("restore_vma: reopened pal_handle for uri=%s", vma->file->uri);
+            }
+
+            log_debug("fs name=%s", vma->file->fs->name);
             ret = fs->fs_ops->mmap(vma->file, vma->addr, vma->length, vma->prot,
                                    vma->flags | MAP_FIXED, vma->file_offset, &valid_length);
+
+            log_debug("fs->fs_ops->mmap(..) exec.");
+
             if (ret < 0)
                 return ret;
         }

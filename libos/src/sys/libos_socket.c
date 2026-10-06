@@ -397,6 +397,10 @@ long libos_syscall_listen(int fd, int backlog) {
         goto out;
     }
 
+/*
+    sock->backlog = backlog;
+*/
+
     sock->state = SOCK_LISTENING;
     sock->can_be_read = true;
     ret = 0;

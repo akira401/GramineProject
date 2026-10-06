@@ -9,10 +9,19 @@
 
 int read_exact(PAL_HANDLE handle, void* buf, size_t size) {
     size_t read = 0;
-    while (read < size) {
+/*
+log_debug("read_exact: called with handle=%p, buf=%p, size=%zu", handle, buf, size);
+*/  
+  while (read < size) {
         size_t tmp_read = size - read;
-        int ret = PalStreamRead(handle, /*offset=*/0, &tmp_read, (char*)buf + read);
-        if (ret < 0) {
+/*
+log_debug("read_exact: calling PalStreamRead with offset=0, requested=%zu", tmp_read);
+*/  
+      int ret = PalStreamRead(handle, /*offset=*/0, &tmp_read, (char*)buf + read);
+/*
+log_debug("read_exact: PalStreamRead returned ret=%d, tmp_read=%zu", ret, tmp_read);
+*/  
+      if (ret < 0) {
             if (ret == PAL_ERROR_INTERRUPTED || ret == PAL_ERROR_TRYAGAIN) {
                 continue;
             }
@@ -22,6 +31,9 @@ int read_exact(PAL_HANDLE handle, void* buf, size_t size) {
         }
         read += tmp_read;
     }
+/*
+log_debug("read_exact: completed, total read=%zu", read);
+*/
     return 0;
 }
 

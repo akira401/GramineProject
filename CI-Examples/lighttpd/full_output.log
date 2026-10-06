@@ -1,0 +1,557 @@
+gramine-direct ./lighttpd
+(libos_init.c:387:libos_init) debug: Gramine was built from commit: ff71d7afea730dffd56a97af39bb6a73ee6c7662
+(libos_init.c:389:libos_init) debug: Host: Linux
+(libos_context.c:70:libos_xstate_init) debug: LibOS xsave_enabled 1, xsave_size 0x2b00(11008), xsave_features 0x602e7
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0xffffffffff600000-0xffffffffff601000 ([vsyscall]) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7ffffffde000-0x7ffffffff000 ([stack]) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7ffffffdd000-0x7ffffffde000 (stack guard) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7ffffff9c000-0x7ffffffdd000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7ffffff8b000-0x7ffffff9c000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe6b000-0x7ffffff8b000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe6a000-0x7fffffe6b000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe69000-0x7fffffe6a000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe68000-0x7fffffe69000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe67000-0x7fffffe68000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe65000-0x7fffffe67000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe64000-0x7fffffe65000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe63000-0x7fffffe64000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe61000-0x7fffffe63000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe5e000-0x7fffffe61000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe5b000-0x7fffffe5e000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe59000-0x7fffffe5b000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe54000-0x7fffffe59000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe4f000-0x7fffffe54000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe4c000-0x7fffffe4f000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe43000-0x7fffffe4c000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe3a000-0x7fffffe43000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe34000-0x7fffffe3a000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe1d000-0x7fffffe2e000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe0c000-0x7fffffe1d000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffe01000-0x7fffffe0c000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffde3000-0x7fffffdf8000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffdc2000-0x7fffffde3000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffda1000-0x7fffffdc2000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffd5f000-0x7fffffd88000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffd13000-0x7fffffd54000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffcc5000-0x7fffffd06000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffc57000-0x7fffffca8000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffbd6000-0x7fffffc57000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffb20000-0x7fffffba1000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffae7000-0x7fffffb20000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffae6000-0x7fffffae7000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffffa42000-0x7fffffae3000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffff941000-0x7fffffa42000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffff840000-0x7fffff941000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7fffff42b000-0x7fffff544000 (PAL internal me) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7ffff7ffc000-0x7ffff7fff000 () bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7ffff7ff9000-0x7ffff7ffc000 (/usr/local/lib/) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7ffff7fba000-0x7ffff7ff9000 (/usr/local/lib/) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7ffff7fb8000-0x7ffff7fba000 ([vdso]) bookkeeped
+(libos_vma.c:666:init_vma) debug: Initial VMA region 0x7ffff7fb4000-0x7ffff7fb8000 ([vvar]) bookkeeped
+(libos_vma.c:697:init_vma) debug: ASLR top address adjusted to 0x181b4aaf6000
+(libos_init.c:420:libos_init) debug: LibOS loaded at 0x7fffff42b000, ready to initialize
+(libos_init.c:512:libos_init) debug: init: starting init_trusted_allowed_files
+(libos_init.c:514:libos_init) debug: init: starting init_ipc
+(libos_init.c:516:libos_init) debug: init: starting init_process
+(libos_init.c:518:libos_init) debug: init: starting init_threading
+(libos_init.c:668:create_pipe) debug: Creating pipe: pipe.srv:18078588180968481841/07375425da3e208676f4bd07f152b600295c9c2b2d66368cc299a643db6fb70f
+(libos_init.c:520:libos_init) [P1:T1:] debug: init: starting init_mount_root
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "file:." (chroot) under /
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "proc" (pseudo) under /proc
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "dev" (pseudo) under /dev
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "sys" (pseudo) under /sys
+(libos_init.c:522:libos_init) [P1:T1:] debug: init: starting init_mount
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc" (chroot) under /lib
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "file:/lib/x86_64-linux-gnu" (chroot) under /lib/x86_64-linux-gnu
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "file:/home/kondou/gramine/CI-Examples/lighttpd/install" (chroot) under /home/kondou/gramine/CI-Examples/lighttpd/install
+(libos_fs.c:552:mount_fs) [P1:T1:] debug: mounting "(null)" (tmpfs) under /var/tmp
+(libos_init.c:524:libos_init) [P1:T1:] debug: init: starting init_std_handles
+(fs.c:62:dev_tty_open) [P1:T1:] debug: dev_tty_open called
+(libos_handle.c:534:put_handle) [P1:T1:] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff855d30 uri=console:
+(fs.c:62:dev_tty_open) [P1:T1:] debug: dev_tty_open called
+(libos_handle.c:534:put_handle) [P1:T1:] debug: put_handle: hdl=0x7fffffd9a280 pal=0x7fffff855eb0 uri=console:
+(libos_init.c:528:libos_init) [P1:T1:] debug: init: starting init_exec_handle
+(libos_handle.c:534:put_handle) [P1:T1:] debug: put_handle: hdl=0x7fffffd9a4b8 pal=0x7fffff856130 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/sbin/lighttpd
+(libos_init.c:535:libos_init) [P1:T1:lighttpd] debug: init: starting init_async_worker
+(libos_init.c:668:create_pipe) [P1:T1:lighttpd] debug: Creating pipe: pipe.srv:18078588180968481841/e1595348521ed7e197a24208f795d11ad0e28234fcc802681c79021ac8147b26
+(libos_init.c:668:create_pipe) [P1:T1:lighttpd] debug: Creating pipe: pipe.srv:18078588180968481841/bc6a2ba02b0e420b2fd5e90f09b59b97eeedcaa20418b9d61d9d835c27061789
+(libos_init.c:540:libos_init) [P1:T1:lighttpd] debug: init: starting init_stack
+(libos_init.c:308:init_stack) [P1:T1:lighttpd] debug: Allocated stack at 0x181b4aab6000 (size = 0x40000)
+(libos_async.c:126:libos_async_worker) [P1:libos] debug: Async worker thread started
+(libos_init.c:549:libos_init) [P1:T1:lighttpd] debug: init: starting init_elf_objects
+(libos_rtld.c:853:load_elf_object) [P1:T1:lighttpd] debug: loading "file:/home/kondou/gramine/CI-Examples/lighttpd/install/sbin/lighttpd"
+(libos_debug.c:121:append_r_debug) [P1:T1:lighttpd] debug: adding file:/home/kondou/gramine/CI-Examples/lighttpd/install/sbin/lighttpd at 0x181b4aa55000
+(libos_rtld.c:907:find_interp) [P1:T1:lighttpd] debug: searching for interpreter: /lib/ld-linux-x86-64.so.2
+(libos_rtld.c:853:load_elf_object) [P1:T1:lighttpd] debug: loading "file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2"
+(libos_debug.c:121:append_r_debug) [P1:T1:lighttpd] debug: adding file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2 at 0x181b4aa1d000
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a6f0 pal=0x7fffff8567b0 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a4b8 pal=0x7fffff856130 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/sbin/lighttpd
+(libos_init.c:551:libos_init) [P1:T1:lighttpd] debug: init: starting init_signal_handling
+(libos_init.c:553:libos_init) [P1:T1:lighttpd] debug: init: starting init_ipc_worker
+(libos_init.c:668:create_pipe) [P1:T1:lighttpd] debug: Creating pipe: pipe.srv:18078588180968481841/1
+(libos_init.c:668:create_pipe) [P1:T1:lighttpd] debug: Creating pipe: pipe.srv:18078588180968481841/865c810214675eafe88fdc3b5e5d1e8ea58578c55c92a428f0ab7adc41832c5e
+(libos_init.c:607:libos_init) [P1:T1:lighttpd] debug: LibOS initialized
+(libos_init.c:610:libos_init) [P1:T1:lighttpd] debug: [DEBUG] got cur_tcb, regs=0
+(libos_init.c:618:libos_init) [P1:T1:lighttpd] debug: [DEBUG] about to call set_default_tls
+(libos_init.c:620:libos_init) [P1:T1:lighttpd] debug: [DEBUG] set_default_tls done
+(libos_init.c:622:libos_init) [P1:T1:lighttpd] debug: [DEBUG] about to call execute_elf_object
+(libos_ipc_worker.c:372:ipc_worker_wrapper) [P1:libos] debug: IPC worker started
+(libos_debug.c:121:append_r_debug) [P1:T1:lighttpd] debug: adding file:[vdso_libos] at 0x181b4aa1c000
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0 uri=(null)
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9a928 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0 uri=(null)
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9a928 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0 uri=(null)
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9a928 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_rtld.c:1053:register_library) [P1:T1:lighttpd] debug: glibc register library /lib/libc.so.6 loaded at 0x181b4a841000
+(libos_debug.c:121:append_r_debug) [P1:T1:lighttpd] debug: adding file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6 at 0x181b4a841000
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff856fb0 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9ab60 pal=0x7fffff856fb0 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_parser.c:1672:warn_unsupported_syscall) [P1:T1:lighttpd] warning: Unsupported system call rseq
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0 uri=(null)
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9ab60 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff857030 uri=file:./lighttpd.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff857030 uri=file:./lighttpd.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff857030 uri=file:./lighttpd.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff857030 uri=file:./lighttpd.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff857230 uri=file:./lighttpd-server.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff857230 uri=file:./lighttpd-server.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff857230 uri=file:./lighttpd-server.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff857230 uri=file:./lighttpd-server.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff857230 uri=file:./lighttpd-server.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff857230 uri=file:./lighttpd-server.conf
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9ad98 pal=0x7fffff857230 uri=file:./lighttpd-server.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff8572b0 uri=file:./lighttpd-generic.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff8572b0 uri=file:./lighttpd-generic.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff8572b0 uri=file:./lighttpd-generic.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff8572b0 uri=file:./lighttpd-generic.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff8572b0 uri=file:./lighttpd-generic.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0x7fffff8572b0 uri=file:./lighttpd-generic.conf
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9ad98 pal=0x7fffff8572b0 uri=file:./lighttpd-generic.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff857030 uri=file:./lighttpd.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff857030 uri=file:./lighttpd.conf
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9ab60 pal=0x7fffff857030 uri=file:./lighttpd.conf
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a280 pal=0x7fffff855eb0 uri=console:
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff855d30 uri=console:
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9a048 pal=0x7fffff855d30 uri=console:
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a280 pal=0x7fffff855eb0 uri=console:
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ad98 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_rtld.c:1053:register_library) [P1:T1:lighttpd] debug: glibc register library /home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so loaded at 0x181b4a839000
+(libos_debug.c:121:append_r_debug) [P1:T1:lighttpd] debug: adding file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so at 0x181b4a839000
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff857430 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9a048 pal=0x7fffff857430 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_rtld.c:1053:register_library) [P1:T1:lighttpd] debug: glibc register library /home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so loaded at 0x181b4a831000
+(libos_debug.c:121:append_r_debug) [P1:T1:lighttpd] debug: adding file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so at 0x181b4a831000
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff857730 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9afd0 pal=0x7fffff857730 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0 uri=(null)
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9afd0 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0 uri=(null)
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9afd0 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0 uri=(null)
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9afd0 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0 uri=(null)
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9afd0 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_rtld.c:1053:register_library) [P1:T1:lighttpd] debug: glibc register library /lib/x86_64-linux-gnu/libz.so.1 loaded at 0x181b4a815000
+(libos_debug.c:121:append_r_debug) [P1:T1:lighttpd] debug: adding file:/lib/x86_64-linux-gnu/libz.so.1 at 0x181b4a815000
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff8579b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9b208 pal=0x7fffff8579b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_rtld.c:1053:register_library) [P1:T1:lighttpd] debug: glibc register library /home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so loaded at 0x181b4a80d000
+(libos_debug.c:121:append_r_debug) [P1:T1:lighttpd] debug: adding file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so at 0x181b4a80d000
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9b440 pal=0x7fffff857c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_rtld.c:1053:register_library) [P1:T1:lighttpd] debug: glibc register library /home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so loaded at 0x181b4a808000
+(libos_debug.c:121:append_r_debug) [P1:T1:lighttpd] debug: adding file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so at 0x181b4a808000
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0x7fffff857f30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9b678 pal=0x7fffff857f30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+2026-08-17 15:39:03: server.c.1515) server started(test) (lighttpd/1.4.59)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a280 pal=0x7fffff855eb0 uri=console:
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0 uri=(null)
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9b8b0 pal=0 uri=(null)
+2026-08-17 15:39:03: server.c.1694) can't have more connections than fds/2: 1024 824
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a280 pal=0x7fffff855eb0 uri=console:
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0 uri=(null)
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9b8b0 pal=0 uri=(null)
+(libos_clone.c:130:libos_syscall_save) [P1:T1:lighttpd] debug: save syscall boot.
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9bae8 pal=0x7fffff8585b0 uri=file:./rm.txt
+(libos_checkpoint.c:634:save_checkpoint) [P1:T1:lighttpd] debug: Opening checkpoint file at path: cp.txt
+(libos_checkpoint.c:635:save_checkpoint) [P1:T1:lighttpd] debug: Opening reserved memory file at path: rm.txt
+(libos_checkpoint.c:541:cp_alloc) [P1:T1:lighttpd] debug: allocating checkpoint store (size = 67108864, reserve = 33554432)
+(libos_ipc.c:383:cp_process_ipc_ids) [P1:T1:lighttpd] debug: BEGIN_CP_FUNC(process_ipc_ids): called.
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b440 pal=0x7fffff857db0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_staticfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b208 pal=0x7fffff857ab0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_dirlisting.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9afd0 pal=0x7fffff8576b0 uri=file:/lib/x86_64-linux-gnu/libz.so.1
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a048 pal=0x7fffff8575b0 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_deflate.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9ab60 pal=0x7fffff855c30 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/lib/mod_indexfile.so
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a928 pal=0x7fffff856e30 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/libc.so.6
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a6f0 pal=0x7fffff8567b0 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a6f0 pal=0x7fffff8567b0 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a6f0 pal=0x7fffff8567b0 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a6f0 pal=0x7fffff8567b0 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a6f0 pal=0x7fffff8567b0 uri=file:/usr/local/lib/x86_64-linux-gnu/gramine/runtime/glibc/ld-linux-x86-64.so.2
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a4b8 pal=0x7fffff856130 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/sbin/lighttpd
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a4b8 pal=0x7fffff856130 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/sbin/lighttpd
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a4b8 pal=0x7fffff856130 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/sbin/lighttpd
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a4b8 pal=0x7fffff856130 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/sbin/lighttpd
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a4b8 pal=0x7fffff856130 uri=file:/home/kondou/gramine/CI-Examples/lighttpd/install/sbin/lighttpd
+(libos_clone.c:123:migrate_fork) [P1:T1:lighttpd] debug: complete checkpointing data
+(libos_checkpoint.c:690:save_checkpoint) [P1:T1:lighttpd] debug: checkpoint of 76160 bytes created
+(libos_checkpoint.c:703:save_checkpoint) [P1:T1:lighttpd] debug: save: hdr.offset     = 0
+(libos_checkpoint.c:704:save_checkpoint) [P1:T1:lighttpd] debug: save: cpstore.offset = 76160
+(libos_checkpoint.c:716:save_checkpoint) [P1:T1:lighttpd] debug: cpstore.base = 0x7ffff942b000 (0x7ffff942b000)
+(libos_checkpoint.c:717:save_checkpoint) [P1:T1:lighttpd] debug: cpstore.offset = 76160
+(libos_checkpoint.c:718:save_checkpoint) [P1:T1:lighttpd] debug: cpstore.bound = 67108864
+(libos_checkpoint.c:719:save_checkpoint) [P1:T1:lighttpd] debug: mem_entries_cnt = 176
+(libos_checkpoint.c:720:save_checkpoint) [P1:T1:lighttpd] debug: palhdl_entries_cnt = 12
+(libos_checkpoint.c:721:save_checkpoint) [P1:T1:lighttpd] debug: first_mem_entry = 0x7ffff94364d8, last_palhdl_entry = 0x7ffff943b698
+(libos_checkpoint.c:723:save_checkpoint) [P1:T1:lighttpd] debug: hdr.addr = 0x7ffff942b000, hdr.size = 76160
+(libos_checkpoint.c:725:save_checkpoint) [P1:T1:lighttpd] debug: save: hdr.addr       = 0x7ffff942b000
+(libos_checkpoint.c:726:save_checkpoint) [P1:T1:lighttpd] debug: save: hdr.size       = 76160
+(libos_checkpoint.c:727:save_checkpoint) [P1:T1:lighttpd] debug: save: hdr.mem_offset = 0xb4d8
+(libos_checkpoint.c:728:save_checkpoint) [P1:T1:lighttpd] debug: save: cpstore.base   = 0x7ffff942b000
+(libos_checkpoint.c:729:save_checkpoint) [P1:T1:lighttpd] debug: save: first_mem_entry= 0x7ffff94364d8
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_checkpoint.c:733:save_checkpoint) [P1:T1:lighttpd] debug: checkpoint header write.(bytes:56)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_checkpoint.c:737:save_checkpoint) [P1:T1:lighttpd] debug: checkpoint data write.(bytes:76160)
+(libos_checkpoint.c:740:save_checkpoint) [P1:T1:lighttpd] debug: save: hdr.addr       = 0x7ffff942b000
+(libos_checkpoint.c:741:save_checkpoint) [P1:T1:lighttpd] debug: save: hdr.size       = 76160
+(libos_checkpoint.c:742:save_checkpoint) [P1:T1:lighttpd] debug: save: hdr.mem_offset = 0xb4d8
+(libos_checkpoint.c:743:save_checkpoint) [P1:T1:lighttpd] debug: save: cpstore.base   = 0x7ffff942b000
+(libos_checkpoint.c:744:save_checkpoint) [P1:T1:lighttpd] debug: save: first_mem_entry= 0x7ffff94364d8
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9bae8 pal=0x7fffff8585b0 uri=file:./rm.txt
+(libos_checkpoint.c:799:save_checkpoint) [P1:T1:lighttpd] debug: reserved_mem_ranges_len write.(bytes:8)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9bae8 pal=0x7fffff8585b0 uri=file:./rm.txt
+(libos_checkpoint.c:810:save_checkpoint) [P1:T1:lighttpd] debug: reserved_mem_ranges write.(bytes:768)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9b8b0 pal=0x7fffff858330 uri=file:./cp.txt
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9bae8 pal=0x7fffff8585b0 uri=file:./rm.txt
+(libos_handle.c:540:put_handle) [P1:T1:lighttpd] debug: destroy handle=0x7fffffd9bae8 pal=0x7fffff8585b0 uri=file:./rm.txt
+save syscall successed.
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a280 pal=0x7fffff855eb0 uri=console:
+elapsed time: 0.000893000 seconds
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9a280 pal=0x7fffff855eb0 uri=console:
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)
+(libos_handle.c:534:put_handle) [P1:T1:lighttpd] debug: put_handle: hdl=0x7fffffd9b678 pal=0 uri=(null)

@@ -15,6 +15,7 @@
 #include "pal.h"
 #include "stat.h"
 #include "toml_utils.h"
+#include "libos_socket.h"
 
 static struct libos_lock handle_mgr_lock;
 
@@ -531,7 +532,17 @@ static int clear_flock_locks(struct libos_handle* hdl) {
 void put_handle(struct libos_handle* hdl) {
     refcount_t ref_count = refcount_dec(&hdl->ref_count);
 
+log_debug("put_handle: hdl=%p pal=%p uri=%s",
+          hdl,
+          hdl->pal_handle,
+          hdl->uri ? hdl->uri : "(null)");
+
     if (!ref_count) {
+log_debug("destroy handle=%p pal=%p uri=%s",
+          hdl,
+          hdl->pal_handle,
+          hdl->uri ? hdl->uri : "(null)");
+
         assert(hdl->epoll_items_count == 0);
         assert(LISTP_EMPTY(&hdl->epoll_items));
 
@@ -883,6 +894,7 @@ BEGIN_CP_FUNC(handle) {
 }
 END_CP_FUNC(handle)
 
+/* ここ */
 BEGIN_RS_FUNC(handle) {
     struct libos_handle* hdl = (void*)(base + GET_CP_FUNC_ENTRY());
     __UNUSED(offset);
@@ -891,6 +903,148 @@ BEGIN_RS_FUNC(handle) {
     CP_REBASE(hdl->dentry);
     CP_REBASE(hdl->inode);
     CP_REBASE(hdl->epoll_items);
+    CP_REBASE(hdl->uri); // 追加
+
+/* 追加箇所（必要に応じて使用）*/
+/*
+    if (g_pal_public_state->restore_nohandle) {
+        hdl->pal_handle = NULL;
+
+        if (hdl->uri) {
+            PAL_HANDLE reopened = NULL;
+            int open_ret = PalStreamOpen(hdl->uri, PAL_ACCESS_RDONLY, 0,
+                                         PAL_CREATE_NEVER, 0, &reopened);
+            if (open_ret < 0) {
+                log_error("rs_handle: failed to reopen %s: %s", hdl->uri, pal_strerror(open_ret));
+                return pal_to_unix_errno(open_ret);
+            }
+            hdl->pal_handle = reopened;
+            log_debug("rs_handle: reopened pal_handle for uri=%s", hdl->uri);
+        }
+    } 
+*/
+
+if (g_pal_public_state->restore_nohandle) {
+    hdl->pal_handle = NULL;
+
+    /* ログ */
+        log_debug("rs_handle: type=%d uri=%s acc_mode=%d",
+              hdl->type, hdl->uri ? hdl->uri : "(null)", hdl->acc_mode);
+
+    /* 仮追加 */
+    /*
+    if (hdl->type == TYPE_SOCK) {
+        struct libos_sock_handle* sock = &hdl->info.sock;
+        sock->pal_handle = NULL;
+
+        log_debug("rs_handle: TYPE_SOCK state=%d domain=%d type=%d",
+                  sock->state, sock->domain, sock->type);
+
+    switch (sock->domain) {
+        case AF_INET:
+        case AF_INET6:
+            sock->ops = &sock_ip_ops;
+            break;
+        case AF_UNIX:
+            sock->ops = &sock_unix_ops;
+            break;
+        default:
+            log_error("rs_handle: unknown socket domain %d", sock->domain);
+            return -EAFNOSUPPORT;
+    }
+
+        switch (sock->state) {
+            case SOCK_NEW:
+                {
+                    int ret = sock->ops->create(hdl);
+                    if (ret < 0) {
+                        log_error("rs_handle: socket create failed: %d", ret);
+                        return ret;
+                    }
+                }
+                break;
+
+            case SOCK_BOUND:
+            case SOCK_LISTENING: {
+                int ret = sock->ops->create(hdl);
+                if (ret < 0) {
+                    log_error("rs_handle: socket create failed: %d", ret);
+                    return ret;
+                }
+                ret = sock->ops->bind(hdl, &sock->local_addr, sock->local_addrlen);
+                if (ret < 0) {
+                    log_error("rs_handle: socket bind failed: %d", ret);
+                    return ret;
+                }
+
+                PAL_STREAM_ATTR attr;
+                ret = PalStreamAttributesQueryByHandle(sock->pal_handle, &attr);
+                if (ret < 0) {
+                    log_error("rs_handle: query sock attr failed: %d", ret);
+                    return pal_to_unix_errno(ret);
+                }
+                attr.socket.reuseaddr = sock->reuseaddr;
+                attr.socket.reuseport = sock->reuseport;
+                attr.socket.broadcast = sock->broadcast;
+                attr.socket.receivetimeout_us = sock->receivetimeout_us;
+                attr.socket.sendtimeout_us = sock->sendtimeout_us;
+                ret = PalStreamAttributesSetByHandle(sock->pal_handle, &attr);
+                if (ret < 0) {
+                    log_error("rs_handle: set sock attr failed: %d", ret);
+                    return pal_to_unix_errno(ret);
+                }
+
+                if (sock->state == SOCK_LISTENING) {
+                    ret = sock->ops->listen(hdl, sock->backlog);
+                    if (ret < 0) {
+                        log_error("rs_handle: socket listen failed: %d", ret);
+                        return ret;
+                    }
+                }
+                log_debug("rs_handle: TYPE_SOCK restored, pal_handle=%p", sock->pal_handle);
+                break;
+            }
+
+            case SOCK_CONNECTING:
+            case SOCK_CONNECTED:
+            default:
+            log_error("rs_handle: socket state %d not supported in restore mode yet",
+                  sock->state);
+            return -EOPNOTSUPP;        }
+    }
+*/
+
+    if (hdl->uri) {
+        PAL_HANDLE reopened = NULL;
+
+        /* 元のアクセスモード(acc_mode)に応じて再オープン時のアクセス権を決定する。
+         * 常にRDONLYで開くと、stdout("console:")のように書き込み専用/読み書き
+         * 両用のハンドルが復元後に書き込めなくなり、printf等の出力が失われる。 */
+        enum pal_access pal_access;
+        bool can_read  = hdl->acc_mode & MAY_READ;
+        bool can_write = hdl->acc_mode & MAY_WRITE;
+        if (can_read && can_write) {
+            pal_access = PAL_ACCESS_RDWR;
+        } else if (can_write) {
+            pal_access = PAL_ACCESS_WRONLY;
+        } else {
+            pal_access = PAL_ACCESS_RDONLY;
+        }
+
+        int open_ret = PalStreamOpen(hdl->uri, pal_access, 0,
+                                     PAL_CREATE_NEVER, 0, &reopened);
+        if (open_ret < 0) {
+            log_error("rs_handle: failed to reopen %s: %s", hdl->uri, pal_strerror(open_ret));
+            return pal_to_unix_errno(open_ret);
+        }
+        hdl->pal_handle = reopened;
+        log_debug("rs_handle: reopened pal_handle for uri=%s (acc_mode=%d)",
+                  hdl->uri, hdl->acc_mode);
+
+   log_debug("RS_FUNC(handle): type=%d uri=%s pal_handle=%p", hdl->type, hdl->uri ? hdl->uri : "(null)", hdl->pal_handle); 
+
+   }
+}
 
     if (!create_lock(&hdl->lock)) {
         return -ENOMEM;
@@ -924,6 +1078,8 @@ BEGIN_RS_FUNC(handle) {
 
     if (hdl->fs && hdl->fs->fs_ops && hdl->fs->fs_ops->checkin) {
         int ret = hdl->fs->fs_ops->checkin(hdl);
+log_debug("checkin ret=%d", ret);
+
         if (ret < 0)
             return ret;
     }

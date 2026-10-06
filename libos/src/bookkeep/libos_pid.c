@@ -58,10 +58,20 @@ int init_id_ranges(IDTYPE preload_tid) {
     range->start = preload_tid;
     range->end = preload_tid;
     range->taken_count = 1;
-
     lock(&g_ranges_lock);
     avl_tree_insert(&g_used_ranges_tree, &range->node);
     unlock(&g_ranges_lock);
+
+/* 追加 */
+/*
+    if (!g_process_ipc_ids.leader_vmid) {
+        int ret = register_preloaded_id_owner(preload_tid);
+        if (ret < 0) {
+            return ret;
+        }
+    } 
+*/
+
     return 0;
 }
 

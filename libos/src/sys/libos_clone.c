@@ -19,6 +19,7 @@
 #include "linux_abi/sched.h"
 #include "pal.h"
 #include "toml_utils.h"
+#include "libos_process.h"
 
 struct libos_clone_args {
     PAL_HANDLE create_event;
@@ -122,6 +123,46 @@ static int migrate_fork(struct libos_cp_store* store, struct libos_process* proc
     int ret = START_MIGRATE(store, fork, process_description, thread_description, process_ipc_ids);
     unlock(&g_dcache_lock);
     return ret;
+}
+
+long libos_syscall_save(const char* cpfile, const char* rmfile)
+{
+log_debug("save syscall boot."); 
+ struct libos_thread* thread = get_cur_thread();
+
+/* 追加 */
+    uintptr_t current_tls = 0;
+    current_tls = get_tls();
+    thread->libos_tcb->context.tls = current_tls;   
+/* ここまで*/
+
+ struct libos_process process = {
+         .pid  = thread->tid,
+         .ppid = g_process.pid,
+         .pgid = g_process.pgid,
+         .sid  = g_process.sid,
+         .root = g_process.root,
+         .cwd  = g_process.cwd,
+         .umask = g_process.umask,
+         .exec  = g_process.exec,
+     };
+
+ return save_checkpoint(cpfile, rmfile, &migrate_fork, &process, thread);
+}
+
+/* 追加 */
+long libos_syscall_get_migration_time(uint64_t* elapsed)
+{
+    uint64_t end_time;
+    int ret;
+
+    ret = PalSystemTimeQuery(&end_time);
+    if (ret < 0)
+        return pal_to_unix_errno(ret);
+
+    *elapsed = end_time - g_pal_public_state->migration_start_time;
+
+    return 0;
 }
 
 static long do_clone_new_vm(IDTYPE child_vmid, unsigned long flags, struct libos_thread* thread,

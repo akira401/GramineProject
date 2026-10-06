@@ -39,4 +39,12 @@ sgx.trusted_files = [
   "file:memcached",
   "file:{{ gramine.runtimedir() }}/",
   "file:/usr/{{ arch_libdir }}/",
+  "file:cp.txt",
+  "file:rm.txt",
 ]
+
+sgx.allowed_files = [
+  "file:cp.txt",
+  "file:rm.txt",
+]
+

@@ -8,6 +8,11 @@
 #include <stdarg.h>
 #include <stdint.h>
 
+#include "libos_table.h"
+#include "libos_internal.h"
+#include "libos_lock.h"
+#include "libos_types.h"
+#include "toml_utils.h"
 #include "libos_checkpoint.h"
 #include "libos_flags_conv.h"
 #include "libos_internal.h"
@@ -17,6 +22,9 @@
 #include "libos_utils.h"
 #include "libos_vma.h"
 #include "linux_abi/memory.h"
+#include "libos_signal.h"
+#include "linux_abi/signals.h"
+#include "linux_abi/errors.h"
 #include "list.h"
 #include "pal.h"
 
@@ -223,16 +231,41 @@ static int send_memory_on_stream(PAL_HANDLE stream, struct libos_cp_store* store
             continue;
         }
 
+
         if (!(mem_prot & PAL_PROT_READ) && mem_size > 0) {
-            /* make the area readable */
             ret = PalVirtualMemoryProtect(mem_addr, mem_size, mem_prot | PAL_PROT_READ);
             if (ret < 0) {
                 return pal_to_unix_errno(ret);
             }
         }
 
+
+/*
+        if (!(mem_prot & PAL_PROT_READ) && mem_size > 0) {
+            ret = PalVirtualMemoryProtect(mem_addr, mem_size, mem_prot | PAL_PROT_READ);
+            if (ret < 0) {
+                log_debug("send_memory_on_stream: skipping inaccessible entry "
+                          "addr=%p size=%zu prot=%u ret=%s",
+                          mem_addr, mem_size, mem_prot, unix_strerror(pal_to_unix_errno(ret)));
+                entry = entry->next;
+                continue;  
+            }
+        }
+*/
+
+/*
+          log_debug("sending: addr=%p size=%zu prot=%u dummy=%d",
+          mem_addr,
+          mem_size,
+          mem_prot,
+          entry->dummy);
+*/
+
         ret = write_exact(stream, mem_addr, mem_size);
 
+/*
+        log_debug("write_exact returned %d", ret);
+*/
         if (!(mem_prot & PAL_PROT_READ) && mem_size > 0) {
             /* the area was made readable above; revert to original permissions */
             int ret2 = PalVirtualMemoryProtect(mem_addr, mem_size, mem_prot);
@@ -241,19 +274,62 @@ static int send_memory_on_stream(PAL_HANDLE stream, struct libos_cp_store* store
             }
         }
 
+
         if (ret < 0) {
+              log_error("FAILED: addr=%p size=%zu prot=%u ret=%d",
+              mem_addr,
+              mem_size,
+              mem_prot,
+              ret);
             return ret;
         }
 
-        entry = entry->next;
+
+/*
+if (ret < 0) {
+    log_debug("send_memory_on_stream: skipping inaccessible entry "
+              "addr=%p size=%zu prot=%u ret=%s",
+              mem_addr, mem_size, mem_prot, unix_strerror(ret));
+    ret = 0;  
+    entry = entry->next;
+    continue;
+    }
+*/
+/*
+        if (ret < 0) {
+            log_debug("send_memory_on_stream: sending zero data for inaccessible entry "
+                      "addr=%p size=%zu", mem_addr, mem_size);
+*/
+/*
+            void* zero_buf = calloc(1, mem_size);
+
+            if (zero_buf) {
+                write_exact(stream, zero_buf, mem_size);
+                free(zero_buf);
+            }
+*/
+/*
+            ret = 0;
+            entry = entry->next;
+            continue;
+        }
+*/  
+      entry = entry->next;
     }
 
+
     return 0;
+
+/*
+log_debug("send_memory_on_stream: finished ret=%d", ret);
+    return ret;
+*/
 }
 
 static int send_checkpoint_on_stream(PAL_HANDLE stream, struct libos_cp_store* store) {
     /* first send non-memory entries found at [store->base, store->base + store->offset) */
     int ret = write_exact(stream, (void*)store->base, store->offset);
+
     if (ret < 0) {
         return ret;
     }
@@ -300,14 +376,26 @@ out:
 static int receive_memory_on_stream(PAL_HANDLE handle, struct checkpoint_hdr* hdr, uintptr_t base) {
     int ret;
     ssize_t rebase = base - (uintptr_t)hdr->addr;
+    log_debug("rebase : %zu", rebase);
 
     if (hdr->mem_entries_cnt) {
         struct libos_mem_entry* entry = (struct libos_mem_entry*)(base + hdr->mem_offset);
+        size_t entry_index = 0;
 
         for (; entry; entry = entry->next) {
             CP_REBASE(entry->next);
 
+/*
+            log_debug("restore entry[%zu]:", entry_index);
+            log_debug("  entry ptr:    %p", entry);
+            log_debug("  entry->next:  %p", entry->next);
+            log_debug("  entry->addr:  %p", entry->addr);
+            log_debug("  entry->size:  %zu", entry->size);
+            log_debug("  entry->prot:  %u", (unsigned int)entry->prot);
+            log_debug("  entry->dummy: %d", entry->dummy);
+
             log_debug("memory entry [%p]: %p-%p", entry, entry->addr, entry->addr + entry->size);
+*/
 
             void* addr = ALLOC_ALIGN_DOWN_PTR(entry->addr);
             size_t size = (char*)ALLOC_ALIGN_UP_PTR(entry->addr + entry->size) - (char*)addr;
@@ -345,6 +433,8 @@ static int receive_memory_on_stream(PAL_HANDLE handle, struct checkpoint_hdr* hd
                     return pal_to_unix_errno(ret);
                 }
             }
+
+            entry_index++;
         }
     }
 
@@ -366,8 +456,13 @@ static int restore_checkpoint(struct checkpoint_hdr* hdr, uintptr_t base) {
             continue;
         }
 
+log_debug("restore_checkpoint: about to restore type=%s", CP_FUNC_NAME(cpent->cp_type));  // 追加
+
         rs_func rs = __rs_func[cpent->cp_type - CP_FUNC_BASE];
         int ret = (*rs)(cpent, base, offset, rebase);
+
+log_debug("restore_checkpoint: restored type=%s ret=%d", CP_FUNC_NAME(cpent->cp_type), ret);  // 追加
+
         if (ret < 0) {
             log_error("failed restoring checkpoint at %s (%d)", CP_FUNC_NAME(cpent->cp_type),
                       ret);
@@ -414,12 +509,22 @@ static int receive_handles_on_stream(struct checkpoint_hdr* hdr, void* base, ssi
 
         PAL_HANDLE hdl = NULL;
         ret = PalReceiveHandle(g_pal_public_state->parent_process, &hdl);
+
+        /* ログ */
+log_debug("receive handle: entry=%p phandle=%p hdl=%p",
+          entry, entry->phandle, hdl);
+
+
         /* need to abort migration if PalReceiveHandle() returned error, otherwise app may fail */
         if (ret < 0) {
             ret = pal_to_unix_errno(ret);
             goto out;
         }
         *entry->phandle = hdl;
+
+/* ログ */
+log_debug("assigned handle: target=%p value=%p",
+          entry->phandle, *entry->phandle);
     }
 
     ret = 0;
@@ -516,6 +621,238 @@ static int create_mem_ranges_array(const struct libos_cp_store* cpstore,
     return 0;
 }
 
+long libos_kernel_write(int fd, const void* buf, size_t count) {
+    struct libos_handle* hdl = get_fd_handle(fd, NULL, NULL);
+    if (!hdl)
+        return -EBADF;
+
+    ssize_t ret = do_handle_write(hdl, buf, count);
+    put_handle(hdl);
+
+    if (ret == -EINTR)
+        ret = -ERESTARTSYS;
+
+    return ret;
+}
+
+int save_checkpoint(const char* cpfile, const char* rmfile, migrate_func_t migrate_func,
+                    struct libos_process* process_description,
+                    struct libos_thread* thread_description, ...)
+{
+
+    int cp_fd = libos_syscall_open(cpfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    int rm_fd = libos_syscall_open(rmfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+
+    log_debug("Opening checkpoint file at path: %s", cpfile);
+    log_debug("Opening reserved memory file at path: %s", rmfile);
+
+    if (cp_fd < 0) {
+        log_error("failed to open checkpoint file: %s", cpfile);
+        return -ENOMEM;
+    }
+
+    if (rm_fd < 0) {
+        log_error("failed to reserved memory file: %s", rmfile);
+        return -ENOMEM;
+    }
+
+    int ret0 = 0;
+    int ret1 = 0;
+
+    struct libos_cp_store cpstore = {
+        .alloc = cp_alloc,
+        .bound = CP_INIT_VMA_SIZE,
+    };
+
+    while (1) {
+        cpstore.base = (uintptr_t)cp_alloc(0, cpstore.bound);
+        if (cpstore.base)
+            break;
+
+        cpstore.bound >>= 1;
+        if (cpstore.bound < ALLOC_ALIGNMENT)
+            break;
+    }
+
+    if (!cpstore.base) {
+        ret0 = -ENOMEM;
+        log_error("failed allocating enough memory for checkpoint");
+        goto out;
+    } 
+
+    uintptr_t (*reserved_mem_ranges)[2] = NULL;
+    size_t reserved_mem_ranges_len = 0;
+
+    va_list ap;
+    va_start(ap, thread_description);
+    ret0 = (*migrate_func)(&cpstore, process_description, thread_description, &g_process_ipc_ids, ap);
+    va_end(ap);
+    if (ret0 < 0) {
+        log_error("failed creating checkpoint: %s", unix_strerror(ret0));
+        goto out;
+    }
+
+    ret0 = create_mem_ranges_array(&cpstore, &reserved_mem_ranges, &reserved_mem_ranges_len);
+    if (ret0 < 0) {
+        log_error("creating reserved memory ranges failed: %s",
+                  unix_strerror(ret0));
+        goto out;
+    }
+
+    log_debug("checkpoint of %lu bytes created", cpstore.offset);
+
+    struct checkpoint_hdr hdr;
+    memset(&hdr, 0, sizeof(hdr));
+
+    hdr.addr = (void*)cpstore.base;
+    hdr.size = cpstore.offset;
+
+    /* 追加 */
+/*    hdr.offset = cpstore.offset;
+*/
+
+/* ログ*/
+log_debug("save: hdr.offset     = %zu", hdr.offset);
+log_debug("save: cpstore.offset = %zu", cpstore.offset);
+
+    if (cpstore.mem_entries_cnt) {
+        hdr.mem_offset      = (uintptr_t)cpstore.first_mem_entry - cpstore.base;
+        hdr.mem_entries_cnt = cpstore.mem_entries_cnt;
+    }
+
+    if (cpstore.palhdl_entries_cnt) {
+        hdr.palhdl_offset      = (uintptr_t)cpstore.last_palhdl_entry - cpstore.base;
+        hdr.palhdl_entries_cnt = cpstore.palhdl_entries_cnt;
+    }
+
+    log_debug("cpstore.base = %p (0x%lx)", (void*)cpstore.base, cpstore.base);
+    log_debug("cpstore.offset = %zu", cpstore.offset);
+    log_debug("cpstore.bound = %zu", cpstore.bound);
+    log_debug("mem_entries_cnt = %zu", cpstore.mem_entries_cnt);
+    log_debug("palhdl_entries_cnt = %zu", cpstore.palhdl_entries_cnt);
+    log_debug("first_mem_entry = %p, last_palhdl_entry = %p",
+          (void*)cpstore.first_mem_entry, (void*)cpstore.last_palhdl_entry);
+    log_debug("hdr.addr = %p, hdr.size = %zu", (void*)hdr.addr, hdr.size);
+
+log_debug("save: hdr.addr       = %p", hdr.addr);
+log_debug("save: hdr.size       = %zu", hdr.size);
+log_debug("save: hdr.mem_offset = 0x%zx", hdr.mem_offset);
+log_debug("save: cpstore.base   = 0x%lx", cpstore.base);
+log_debug("save: first_mem_entry= %p", cpstore.first_mem_entry);
+
+
+    ssize_t t0 = libos_kernel_write(cp_fd, &hdr, sizeof(hdr));
+    log_debug("checkpoint header write.(bytes:%ld)", t0);
+
+
+    ssize_t t1 = libos_kernel_write(cp_fd, (void*)cpstore.base, cpstore.offset);
+    log_debug("checkpoint data write.(bytes:%ld)", t1);
+
+
+log_debug("save: hdr.addr       = %p", hdr.addr);
+log_debug("save: hdr.size       = %zu", hdr.size);
+log_debug("save: hdr.mem_offset = 0x%zx", hdr.mem_offset);
+log_debug("save: cpstore.base   = 0x%lx", cpstore.base);
+log_debug("save: first_mem_entry= %p", cpstore.first_mem_entry);
+
+    if ( (size_t)t1 != cpstore.offset){
+        log_error("failed to write checkpoint data.");
+        ret0 = -EIO;
+        goto out;
+    }
+
+
+if (hdr.mem_entries_cnt) {
+    struct libos_mem_entry* entry =
+        (struct libos_mem_entry*)(cpstore.base + hdr.mem_offset);
+
+    while (entry) {
+        size_t           mem_size = entry->size;
+        void*            mem_addr = entry->addr;
+        pal_prot_flags_t mem_prot = entry->prot;
+
+        if (entry->dummy) {
+            entry = entry->next;
+            continue;
+        }
+
+        if (!(mem_prot & PAL_PROT_READ) && mem_size > 0) {
+            ret0 = PalVirtualMemoryProtect(mem_addr, mem_size, mem_prot | PAL_PROT_READ);
+            if (ret0 < 0) {
+                log_error("save_checkpoint: failed to add READ prot addr=%p size=%zu: %s",
+                          mem_addr, mem_size, unix_strerror(pal_to_unix_errno(ret0)));
+                ret0 = pal_to_unix_errno(ret0);
+                goto out;
+            }
+        }
+
+        ssize_t w = libos_kernel_write(cp_fd, mem_addr, mem_size);
+
+        if (!(mem_prot & PAL_PROT_READ) && mem_size > 0) {
+            int ret2 = PalVirtualMemoryProtect(mem_addr, mem_size, mem_prot);
+            if (ret2 < 0 && w >= 0) {
+                w = pal_to_unix_errno(ret2);
+            }
+        }
+
+        if ((size_t)w != mem_size) {
+            log_error("save_checkpoint: failed to write memory entry addr=%p size=%zu w=%zd",
+                      mem_addr, mem_size, w);
+            ret0 = -EIO;
+            goto out;
+        }
+
+        entry = entry->next;
+    }
+}
+
+
+    ssize_t w0 = libos_kernel_write(rm_fd, &reserved_mem_ranges_len, sizeof(reserved_mem_ranges_len));
+    log_debug("reserved_mem_ranges_len write.(bytes:%ld)", w0);
+ 
+    if (w0 != sizeof(reserved_mem_ranges_len)) {
+        log_error("failed to write reserved_mem_ranges_len");
+        ret1 = -EIO;
+        goto out;
+    }
+
+    size_t size = reserved_mem_ranges_len * sizeof(*reserved_mem_ranges);
+
+    ssize_t w1 = libos_kernel_write(rm_fd, reserved_mem_ranges, size);
+    log_debug("reserved_mem_ranges write.(bytes:%ld)", w1);
+
+    if ((size_t)w1 != size) {
+        log_error("failed to write reserved_mem_ranges");
+        ret1 = -EIO;
+        goto out;
+    }
+
+    out:
+    if (cpstore.base) {
+        void* tmp_vma = NULL;
+        int tmp_ret = bkeep_munmap((void*)cpstore.base, cpstore.bound, true,
+                                   &tmp_vma);
+        if (tmp_ret < 0) {
+            log_error("failed unmaping checkpoint: %s", unix_strerror(tmp_ret));
+        }
+
+        bkeep_remove_tmp_vma(tmp_vma);
+    }
+ 
+    ret0 = libos_syscall_close(cp_fd);
+    ret1 = libos_syscall_close(rm_fd);
+
+    if (ret0 < 0){
+        log_error("failed to close checkpoint file: %s", cpfile);
+    }
+
+    if (ret1 < 0){
+        log_error("failed to reserved memory file: %s", rmfile);
+    }
+
+    return ret0;
+}
+
 int create_process_and_send_checkpoint(migrate_func_t migrate_func,
                                        struct libos_child_process* child_process,
                                        struct libos_process* process_description,
@@ -579,6 +916,17 @@ int create_process_and_send_checkpoint(migrate_func_t migrate_func,
         hdr.palhdl_offset      = (uintptr_t)cpstore.last_palhdl_entry - cpstore.base;
         hdr.palhdl_entries_cnt = cpstore.palhdl_entries_cnt;
     }
+
+    log_debug("cpstore.base = %p (0x%lx)", (void*)cpstore.base, cpstore.base);
+    log_debug("cpstore.offset = %zu", cpstore.offset);
+    log_debug("cpstore.bound = %zu", cpstore.bound);
+    log_debug("mem_entries_cnt = %zu", cpstore.mem_entries_cnt);
+    log_debug("palhdl_entries_cnt = %zu", cpstore.palhdl_entries_cnt);
+    log_debug("first_mem_entry = %p, last_palhdl_entry = %p",
+          (void*)cpstore.first_mem_entry, (void*)cpstore.last_palhdl_entry);
+    log_debug("hdr.addr = %p, hdr.size = %zu", (void*)hdr.addr, hdr.size);
+
+    log_debug("checkpoint header write.(bytes:%ld)", sizeof(hdr));
 
     uintptr_t (*reserved_mem_ranges)[2] = NULL;
     size_t reserved_mem_ranges_len = 0;
@@ -710,6 +1058,7 @@ int receive_checkpoint_and_restore(struct checkpoint_hdr* hdr) {
         return pal_to_unix_errno(ret);
     }
 
+
     log_debug("checkpoint mapped at %p-%p", base, base + hdr->size);
 
     ret = read_exact(g_pal_public_state->parent_process, base, hdr->size);
@@ -717,6 +1066,7 @@ int receive_checkpoint_and_restore(struct checkpoint_hdr* hdr) {
         goto out_fail;
     }
     log_debug("read checkpoint of %lu bytes from parent", hdr->size);
+
 
     ret = receive_memory_on_stream(g_pal_public_state->parent_process, hdr, (uintptr_t)base);
     if (ret < 0) {
@@ -737,6 +1087,203 @@ int receive_checkpoint_and_restore(struct checkpoint_hdr* hdr) {
     migrated_memory_start = mapaddr;
     migrated_memory_end   = (char*)mapaddr + mapsize;
 
+    ret = restore_checkpoint(hdr, (uintptr_t)base);
+    if (ret < 0) {
+        goto out_fail;
+    }
+
+    return 0;
+
+out_fail:;
+    void* tmp_vma = NULL;
+    if (bkeep_munmap(mapaddr, mapsize, /*is_internal=*/true, &tmp_vma) < 0) {
+        BUG();
+    }
+    if (PalVirtualMemoryFree(mapaddr, mapsize) < 0) {
+        BUG();
+    }
+    bkeep_remove_tmp_vma(tmp_vma);
+    return ret;
+}
+
+/* read_exactの代わり */
+/*
+static int read_file_exact(PAL_HANDLE handle, uint64_t offset, void* buf, size_t size) {
+    size_t read = 0;
+    while (read < size) {
+        size_t tmp_read = size - read;
+        int ret = PalStreamRead(handle, offset + read, &tmp_read, (char*)buf + read);
+        if (ret < 0) {
+            if (ret == PAL_ERROR_INTERRUPTED || ret == PAL_ERROR_TRYAGAIN)
+                continue;
+            return pal_to_unix_errno(ret);
+        }
+        if (tmp_read == 0)
+            return -ENODATA;
+        read += tmp_read;
+    }
+    return 0;
+}
+*/
+
+/* receive_memory_on_stream() の代わり */
+/*
+static int receive_memory_from_file(PAL_HANDLE handle, uint64_t* offset,
+                                     struct checkpoint_hdr* hdr, uintptr_t base) {
+    int ret;
+    size_t entry_index = 0;
+    ssize_t rebase = base - (uintptr_t)hdr->addr;
+
+    if (!hdr->mem_entries_cnt)
+        return 0;
+
+    struct libos_mem_entry* entry =
+        (struct libos_mem_entry*)(base + hdr->mem_offset);
+
+    for (; entry; entry = entry->next) {
+        CP_REBASE(entry->next);
+
+        log_debug("restore entry[%zu]:", entry_index);
+        log_debug("  entry->addr:  %p", entry->addr);
+        log_debug("  entry->size:  %zu", entry->size);
+        log_debug("  entry->prot:  %u", (unsigned int)entry->prot);
+        log_debug("  entry->dummy: %d", entry->dummy);
+        log_debug("  file_offset:  %lu", *offset);
+
+        if (entry->dummy) {
+            void* addr = ALLOC_ALIGN_DOWN_PTR(entry->addr);
+            size_t size = (char*)ALLOC_ALIGN_UP_PTR(entry->addr + entry->size) - (char*)addr;
+            ret = bkeep_mmap_fixed(addr, size, PAL_PROT_TO_LINUX(entry->prot),
+                                   MAP_FIXED_NOREPLACE | MAP_ANONYMOUS | MAP_PRIVATE,
+                                   NULL, 0, "tmp vma");
+            if (ret < 0)
+                return ret;
+            continue;
+        }
+
+        void* addr = ALLOC_ALIGN_DOWN_PTR(entry->addr);
+        size_t size = (char*)ALLOC_ALIGN_UP_PTR(entry->addr + entry->size) - (char*)addr;
+        pal_prot_flags_t prot = entry->prot;
+
+        ret = PalVirtualMemoryAlloc(addr, size, prot | PAL_PROT_WRITE);
+        if (ret < 0)
+            return pal_to_unix_errno(ret);
+
+        // オフセット指定で読み込む
+        ret = read_file_exact(handle, *offset, entry->addr, entry->size);
+        if (ret < 0)
+            return ret;
+        *offset += entry->size;
+
+        if (!(prot & PAL_PROT_WRITE)) {
+            ret = PalVirtualMemoryProtect(addr, size, prot);
+            if (ret < 0)
+                return pal_to_unix_errno(ret);
+        }
+    }
+
+    return 0;
+}
+*/
+
+/* ハンドル以外の情報を復元する関数「receive_checkpoint_and_restore_nohandle」 */
+int receive_checkpoint_and_restore_nohandle(struct checkpoint_hdr* hdr) {
+    int ret = 0;
+
+    /* オフセット管理用 */
+/*  
+  uint64_t file_offset = sizeof(struct checkpoint_hdr);  // ヘッダ分をスキップ
+*/
+
+    void* base = hdr->addr;
+    void* mapaddr = ALLOC_ALIGN_DOWN_PTR(base);
+    size_t mapsize = (char*)ALLOC_ALIGN_UP_PTR(base + hdr->size) - (char*)mapaddr;
+
+    /* first try allocating at address used by parent process */
+    if (g_pal_public_state->memory_address_start <= mapaddr &&
+        mapaddr + mapsize <= g_pal_public_state->memory_address_end) {
+        ret = bkeep_mmap_fixed(mapaddr, mapsize, PROT_READ | PROT_WRITE,
+                               CP_MMAP_FLAGS | MAP_FIXED_NOREPLACE, NULL, 0, "cpstore");
+        if (ret < 0) {
+            /* the address used by parent overlaps with this child's memory regions */
+            base = NULL;
+        }
+    } else {
+        /* this region is not available to LibOS in the current Gramine instance */
+        base = NULL;
+    }
+
+    if (!base) {
+        /* address used by parent process is occupied; allocate checkpoint anywhere */
+        ret = bkeep_mmap_any(ALLOC_ALIGN_UP(hdr->size), PROT_READ | PROT_WRITE, CP_MMAP_FLAGS, NULL,
+                             0, "cpstore", &base);
+        if (ret < 0) {
+            return ret;
+        }
+
+        mapaddr = base;
+        mapsize = ALLOC_ALIGN_UP(hdr->size);
+    }
+
+    ret = PalVirtualMemoryAlloc(mapaddr, mapsize, PAL_PROT_READ | PAL_PROT_WRITE);
+    if (ret < 0) {
+        void* tmp_vma = NULL;
+        if (bkeep_munmap(mapaddr, mapsize, /*is_internal=*/true, &tmp_vma) < 0)
+            BUG();
+        bkeep_remove_tmp_vma(tmp_vma);
+        return pal_to_unix_errno(ret);
+    }
+
+    log_debug("checkpoint mapped at %p-%p", base, base + hdr->size);
+
+/*
+    ret = read_file_exact(g_pal_public_state->parent_process,
+                          file_offset, mapaddr, hdr->size);
+    if (ret < 0) {
+        log_error("[nohandle] failed to read checkpoint data: %s", unix_strerror(ret));
+        goto out_fail;
+    }
+    file_offset += hdr->size;
+    log_debug("read checkpoint of %lu bytes", hdr->size);
+*/
+
+    ret = read_exact(g_pal_public_state->parent_process, mapaddr, hdr->size);
+    if (ret < 0) {
+        goto out_fail;
+    }
+
+uint8_t* b = (uint8_t*)mapaddr;
+log_debug("[nohandle] seekable=0 mapaddr[+0x00]: %02x %02x %02x %02x %02x %02x %02x %02x",
+          b[0], b[1], b[2], b[3], b[4], b[5], b[6], b[7]);
+
+    log_debug("read checkpoint of %lu bytes from parent", hdr->size);
+
+
+/* ここにログを追加 */
+log_debug("base           = %p", base);
+log_debug("hdr->addr      = %p", hdr->addr);
+log_debug("hdr->mem_offset= 0x%lx", hdr->mem_offset);
+
+/* 
+    ret = receive_memory_from_file(g_pal_public_state->parent_process,
+                                   &file_offset, hdr, (uintptr_t)mapaddr);
+    if (ret < 0)
+        goto out_fail;
+*/
+
+
+    ret = receive_memory_on_stream(g_pal_public_state->parent_process, hdr, (uintptr_t)mapaddr);
+    if (ret < 0) {
+        goto out_fail;
+    }
+
+    log_debug("restored memory from checkpoint");
+    g_received_user_memory = true;
+
+    migrated_memory_start = mapaddr;
+    migrated_memory_end   = (char*)mapaddr + mapsize;
+
+    /* チェックポイントの再構成を行う関数「restore_checkpoint」の実行 */
     ret = restore_checkpoint(hdr, (uintptr_t)base);
     if (ret < 0) {
         goto out_fail;

@@ -379,6 +379,8 @@ BEGIN_CP_FUNC(process_ipc_ids) {
     ADD_CP_FUNC_ENTRY(off);
 
     *(struct libos_ipc_ids*)(base + off) = *ipc_ids;
+
+    log_debug("BEGIN_CP_FUNC(process_ipc_ids): called.");
 }
 END_CP_FUNC(process_ipc_ids)
 

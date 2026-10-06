@@ -611,6 +611,7 @@ struct parser_table {
     [__NR_process_mrelease] = {.slow = false, .name = "process_mrelease", .parser = {NULL}},
     [__NR_futex_waitv] = {.slow = false, .name = "futex_waitv", .parser = {NULL}},
     [__NR_set_mempolicy_home_node] = {.slow = false, .name = "set_mempolicy_home_node", .parser = {NULL}},
+    [__NR_save] = {.slow = false, .name = "save", .parser = {NULL}}, 
 };
 
 const char* const siglist[SIGRTMIN] = {

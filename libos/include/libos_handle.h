@@ -111,6 +111,11 @@ struct libos_sock_handle {
     bool reuseaddr;
     bool reuseport;
     bool broadcast;
+
+    /* 新しく追加 */
+    /*
+    unsigned int backlog;
+    */ 
 };
 
 struct libos_dir_handle {

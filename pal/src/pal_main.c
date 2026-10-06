@@ -16,6 +16,10 @@
 #include "toml.h"
 #include "toml_utils.h"
 
+/*
+extern uint64_t g_pal_start_time;
+*/
+
 struct pal_common_state g_pal_common_state;
 
 extern struct pal_initial_mem_range g_initial_mem_ranges[];
@@ -371,7 +375,7 @@ noreturn void pal_main(uint64_t instance_id,       /* current instance id */
                        const char** arguments,     /* application arguments */
                        const char** environments,  /* environment variables */
                        void (*post_callback)(void) /* callback into host-specific loader */) {
-    if (!instance_id) {
+    if (!parent_process) {
         assert(!parent_process);
         if (_PalRandomBitsRead(&instance_id, sizeof(instance_id)) < 0) {
             INIT_FAIL("Could not generate random instance_id");
@@ -588,8 +592,31 @@ noreturn void pal_main(uint64_t instance_id,       /* current instance id */
 
     pal_disable_early_memory_bookkeeping();
 
-    /* Now we will start the execution */
-    start_execution(arguments, final_environments);
+/*
+uint64_t pal_end_time = 0;
+ret = _PalSystemTimeQuery(&pal_end_time);
+
+if (ret >= 0 && g_pal_start_time != 0) {  
+  log_always("[measurement] PAL initialization time: %lu ns",
+               pal_end_time - g_pal_start_time);
+}
+*/
+
+/* 追加 */
+
+/*
+uint64_t migration_start_time;
+*/
+
+/*
+ret = PalSystemTimeQuery(&g_pal_public_state.migration_start_time);
+
+if (ret < 0)
+    INIT_FAIL("PalSystemTimeQuery() failed: %s", pal_strerror(ret));
+*/
+
+/* Now we will start the execution */
+start_execution(arguments, final_environments);
 
 out_fail:
     /* We wish we will never reached here */

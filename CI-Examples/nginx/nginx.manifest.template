@@ -44,10 +44,14 @@ sgx.trusted_files = [
   "file:{{ arch_libdir }}/",
   "file:/usr/{{ arch_libdir }}/",
   "file:nginx_args",
+  "file:cp.txt",
+  "file:rm.txt",
 ]
 
 # For simplicity, Nginx logs are not protected. In production, you must either disable logs in Nginx
 # or mount them as "encrypted" files.
 sgx.allowed_files = [
   "file:{{ install_dir }}/logs",
+  "file:cp.txt",
+  "file:rm.txt",
 ]

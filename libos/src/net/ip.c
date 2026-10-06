@@ -165,11 +165,24 @@ static int listen(struct libos_handle* handle, unsigned int backlog) {
 
 static int accept(struct libos_handle* handle, bool is_nonblocking,
                   struct libos_handle** out_client) {
+
+/* ログ */
+    log_debug("ENTER accept: handle=%p sock_pal_handle=%p",
+              handle, handle->info.sock.pal_handle);
+
     PAL_HANDLE client_pal_handle;
     struct pal_socket_addr pal_ip_addr = { 0 };
     struct pal_socket_addr pal_local_ip_addr = { 0 };
+
+    /* ログ */
+    log_debug("before accept: libos_handle=%p sock_pal_handle=%p",
+              handle, handle->info.sock.pal_handle);
+
+
     int ret = PalSocketAccept(handle->info.sock.pal_handle, is_nonblocking ? PAL_OPTION_NONBLOCK : 0,
                               &client_pal_handle, &pal_ip_addr, &pal_local_ip_addr);
+
+
     if (ret < 0) {
         return pal_to_unix_errno(ret);
     }

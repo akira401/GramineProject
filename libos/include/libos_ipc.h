@@ -182,6 +182,22 @@ int ipc_alloc_id_range(IDTYPE* out_start, IDTYPE* out_end);
 int ipc_alloc_id_range_callback(IDTYPE src, void* data, uint64_t seq);
 
 /*!
+ * \brief Register a preloaded (restored) ID as owned by the current process.
+ *
+ * \param preload_id  The ID to register as owned by this process.
+ *
+ * This should only be called when the current process is the IPC leader, since the underlying
+ * ID-ownership tree is only meaningful in the IPC leader. Used when a thread's ID is restored
+ * directly from a checkpoint (instead of being freshly allocated via #ipc_alloc_id_range), so
+ * that a later #ipc_release_id_range call for this ID succeeds.
+ */
+/* 追加 */
+/*
+int register_preloaded_id_owner(IDTYPE preload_id);
+*/
+
+
+/*!
  * \brief Release a previously allocated ID range.
  *
  * \param start  Start of the ID range.

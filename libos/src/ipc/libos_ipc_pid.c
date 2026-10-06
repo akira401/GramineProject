@@ -145,6 +145,30 @@ static int alloc_id_range(IDTYPE owner, IDTYPE* start, IDTYPE* end) {
     return ret;
 }
 
+/* 追加 */
+/*
+int register_preloaded_id_owner(IDTYPE preload_id) {
+    assert(!g_process_ipc_ids.leader_vmid);
+
+    struct id_range* new_range = malloc(sizeof(*new_range));
+    if (!new_range) {
+        return -ENOMEM;
+    }
+
+    lock(&g_id_owners_tree_lock);
+    new_range->start = preload_id;
+    new_range->end = preload_id;
+    new_range->owner = g_process_ipc_ids.self_vmid;
+    avl_tree_insert(&g_id_owners_tree, &new_range->node);
+    if (preload_id > g_last_id) {
+        g_last_id = preload_id;
+    }
+    unlock(&g_id_owners_tree_lock);
+
+    return 0;
+}
+*/
+
 static int change_id_owner(IDTYPE id, IDTYPE new_owner) {
     struct id_range* new_range1 = malloc(sizeof(*new_range1));
     if (!new_range1) {
@@ -208,6 +232,10 @@ static int change_id_owner(IDTYPE id, IDTYPE new_owner) {
 }
 
 static void release_id_range(IDTYPE start, IDTYPE end) {
+
+log_error("DEBUG: release_id_range called, self_vmid=%u parent_vmid=%u leader_vmid=%u",
+          g_process_ipc_ids.self_vmid, g_process_ipc_ids.parent_vmid, g_process_ipc_ids.leader_vmid);
+
     lock(&g_id_owners_tree_lock);
     struct id_range dummy = {
         .start = start,

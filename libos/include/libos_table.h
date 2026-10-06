@@ -220,3 +220,5 @@ long libos_syscall_getrandom(char* buf, size_t count, unsigned int flags);
 long libos_syscall_mlock2(unsigned long start, size_t len, int flags);
 long libos_syscall_sysinfo(struct sysinfo* info);
 long libos_syscall_close_range(unsigned int first, unsigned int last, unsigned int flags);
+long libos_syscall_save(const char* cpfile, const char* rmfile);
+long libos_syscall_get_migration_time(uint64_t* elapsed);

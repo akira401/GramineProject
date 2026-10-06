@@ -363,6 +363,8 @@ int PalSendHandle(PAL_HANDLE target_process, PAL_HANDLE cargo) {
 }
 
 int PalReceiveHandle(PAL_HANDLE source_process, PAL_HANDLE* out_cargo) {
+
+
     if (!source_process) {
         return PAL_ERROR_INVAL;
     }

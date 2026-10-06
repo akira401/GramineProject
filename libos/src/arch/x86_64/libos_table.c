@@ -376,7 +376,10 @@ libos_syscall_t libos_syscall_table[LIBOS_SYSCALL_BOUND] = {
     [__NR_process_mrelease]        = (libos_syscall_t)0, // libos_syscall_process_mrelease
     [__NR_futex_waitv]             = (libos_syscall_t)0, // libos_syscall_futex_waitv
     [__NR_set_mempolicy_home_node] = (libos_syscall_t)0, // libos_syscall_set_mempolicy_home_node
+    [__NR_save]                    = (libos_syscall_t)libos_syscall_save,
+    [__NR_get_migration_time]      = (libos_syscall_t)libos_syscall_get_migration_time,
 };
 
 /* by default, all syscalls have `is_mocked = false` and `return_value = 0` */
 struct libos_mock_syscall libos_mock_syscall_table[LIBOS_SYSCALL_BOUND] = { 0 };
+

@@ -233,18 +233,20 @@ out:
     return ret;
 }
 
+/* ここを修正する */
 void init_child_process(int parent_stream_fd, PAL_HANDLE* parent_handle, char** manifest_out,
                         uint64_t* instance_id) {
-    int ret = 0;
 
     struct proc_args proc_args;
+
+    int ret = 0;
 
     ret = read_all(parent_stream_fd, &proc_args, sizeof(proc_args));
     if (ret < 0) {
         INIT_FAIL("communication with parent failed: %s", unix_strerror(ret));
     }
 
-    /* a child must have parent handle and an executable */
+    /* a child must have parent handle and an executable */ 
     if (!proc_args.parent_data_size)
         INIT_FAIL("invalid process created");
 

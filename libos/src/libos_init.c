@@ -419,19 +419,88 @@ noreturn void libos_init(const char* const* argv, const char* const* envp) {
 
     log_debug("LibOS loaded at %p, ready to initialize", &__load_address);
 
-    if (g_pal_public_state->parent_process) {
+    if (g_pal_public_state->parent_process || g_pal_public_state->restore_nohandle) {
         struct checkpoint_hdr hdr;
 
-        int ret = read_exact(g_pal_public_state->parent_process, &hdr, sizeof(hdr));
-        if (ret < 0) {
-            log_error("libos_init: failed to read the whole checkpoint header: %s",
-                      unix_strerror(ret));
-            PalProcessExit(1);
-        }
+/*
+        uint64_t restore_start_us = 0, restore_end_us = 0;
+        int time_ret = PalSystemTimeQuery(&restore_start_us);   // ここから計測開始
 
+        if (time_ret < 0) {
+            log_error("PalSystemTimeQuery failed: %s", pal_strerror(time_ret));
+        }
+*/
+
+        if (g_pal_public_state->parent_process) {
+        log_debug("sizeof(checkpoint_hdr) = %zu", sizeof(struct checkpoint_hdr));
+
+// libos_init.c 内、ヘッダ読み込み直前
+        log_debug("[libos_init] about to call read_exact for header, parent_process=%p",
+          g_pal_public_state->parent_process);
+
+        int ret = read_exact(g_pal_public_state->parent_process, &hdr, sizeof(hdr));
+        log_debug("header read ret = %d", ret);
+            if (ret < 0) {
+                log_error("libos_init: failed to read the whole checkpoint header: %s",
+                          unix_strerror(ret));
+                PalProcessExit(1);
+            }
+         } 
+
+        /* ここにログを追加 */
+        log_debug("hdr.addr       = %p", hdr.addr);
+        log_debug("hdr.size       = %zu", hdr.size);
+        log_debug("hdr.mem_offset = 0x%lx", hdr.mem_offset);
+        log_debug("hdr.mem_entries_cnt = %zu", hdr.mem_entries_cnt);
+        
         assert(hdr.size);
-        RUN_INIT(receive_checkpoint_and_restore, &hdr);
-    } else {
+
+        if (g_pal_public_state->restore_nohandle) {
+            log_debug("receive_checkpoint_and_restore_nohandle() execute.");
+
+        RUN_INIT(receive_checkpoint_and_restore_nohandle, &hdr);
+/*
+ret = PalSystemTimeQuery(&restore_end_time);
+if (ret >= 0 && g_pal_start_time != 0) {
+    log_always("[measurement] PAL start to restore end: %lu us",
+               restore_end_time - g_pal_start_time);
+       }
+*/
+
+/* 一旦 
+uint64_t restore_end_time = 0;
+int ret = PalSystemTimeQuery(&restore_end_time);
+
+if (ret >= 0) {
+    log_always("[measurement] migration_start_time = %lu usec",
+        g_pal_public_state->migration_start_time);
+
+    log_always("[measurement] restore_end_time = %lu usec",
+        restore_end_time);
+
+    log_always("[measurement] elapsed = %lu usec",
+        restore_end_time - g_pal_public_state->migration_start_time);
+}
+*/
+
+ } else {
+            log_debug("receive_checkpoint_and_restore() execute.");
+            RUN_INIT(receive_checkpoint_and_restore, &hdr);
+        }
+/*
+    time_ret = PalSystemTimeQuery(&restore_end_us);   // ここまで
+    if (time_ret < 0) {
+        log_error("PalSystemTimeQuery failed: %s", pal_strerror(time_ret));
+    }
+
+    uint64_t elapsed_us = restore_end_us - restore_start_us;
+    uint64_t elapsed_sec = elapsed_us / 1000000;
+    uint64_t elapsed_usec = elapsed_us % 1000000;
+
+    log_debug("elapsed time: %lu.%09lu seconds", elapsed_sec, elapsed_usec * 1000);
+*/
+
+    }else {
         g_process_ipc_ids.self_vmid = STARTING_VMID;
     }
 
@@ -443,26 +512,35 @@ noreturn void libos_init(const char* const* argv, const char* const* envp) {
      * because mount points can be separate files (e.g., the main executable), and their
      * meta-information (including trusted/allowed info) is initialized during mounting.
      */
+log_debug("init: starting init_trusted_allowed_files");
     RUN_INIT(init_trusted_allowed_files);
-
+log_debug("init: starting init_ipc");
     RUN_INIT(init_ipc);
+log_debug("init: starting init_process");
     RUN_INIT(init_process);
+log_debug("init: starting init_threading");
     RUN_INIT(init_threading);
+log_debug("init: starting init_mount_root");
     RUN_INIT(init_mount_root);
+log_debug("init: starting init_mount");
     RUN_INIT(init_mount);
+log_debug("init: starting init_std_handles");
     RUN_INIT(init_std_handles);
 
     char** expanded_argv = NULL;
+log_debug("init: starting init_exec_handle");
     RUN_INIT(init_exec_handle, argv, &expanded_argv);
     RUN_INIT(init_process_cmdline, expanded_argv ? (const char* const*)expanded_argv : argv);
 
     /* Update log prefix after we initialized `g_process.exec` */
     log_setprefix(libos_get_tcb());
 
+log_debug("init: starting init_async_worker");
     RUN_INIT(init_async_worker);
 
     char** new_argv;
     elf_auxv_t* new_auxv;
+log_debug("init: starting init_stack");
     RUN_INIT(init_stack, expanded_argv ? (const char* const*)expanded_argv : argv, envp, &new_argv,
              &new_auxv);
 
@@ -471,11 +549,15 @@ noreturn void libos_init(const char* const* argv, const char* const* envp) {
         free(expanded_argv);
     }
 
+log_debug("init: starting init_elf_objects");
     RUN_INIT(init_elf_objects);
+log_debug("init: starting init_signal_handling");
     RUN_INIT(init_signal_handling);
+log_debug("init: starting init_ipc_worker");
     RUN_INIT(init_ipc_worker);
 
-    if (g_pal_public_state->parent_process) {
+/* 変更しています0611 */
+    if (g_pal_public_state->parent_process && !g_pal_public_state->restore_nohandle) {
         int ret = connect_to_process(g_process_ipc_ids.parent_vmid);
         if (ret < 0) {
             log_error("libos_init: failed to establish IPC connection to parent: %s",
@@ -528,18 +610,24 @@ noreturn void libos_init(const char* const* argv, const char* const* envp) {
     log_debug("LibOS initialized");
 
     libos_tcb_t* cur_tcb = libos_get_tcb();
+log_debug("[DEBUG] got cur_tcb, regs=%p", cur_tcb->context.regs);
 
     if (cur_tcb->context.regs) {
+        log_debug("[DEBUG] about to call restore_child_context_after_clone");
         restore_child_context_after_clone(&cur_tcb->context);
         /* UNREACHABLE */
     }
 
+log_debug("[DEBUG] about to call set_default_tls"); 
     set_default_tls();
+log_debug("[DEBUG] set_default_tls done"); 
 
+log_debug("[DEBUG] about to call execute_elf_object");
     /* At this point, the exec map has been either copied from checkpoint, or initialized in
      * `init_loader`. */
     execute_elf_object(/*exec_map=*/NULL, new_argv, new_auxv);
     /* UNREACHABLE */
+log_debug("[DEBUG] execute_elf_object returned (should be unreachable)");
 }
 
 /* Warning: not side-channel-resistant! But we don't need this property in the current callsites. */

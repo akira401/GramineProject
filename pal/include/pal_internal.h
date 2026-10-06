@@ -226,6 +226,9 @@ int _PalStreamsWaitEvents(size_t count, PAL_HANDLE* handle_array, pal_wait_flags
 /* PalException calls & structures */
 pal_event_handler_t _PalGetExceptionHandler(enum pal_event event);
 
+
+/*追加 */
+extern uint64_t g_pal_start_time;
 int _PalSystemTimeQuery(uint64_t* out_usec);
 
 /*

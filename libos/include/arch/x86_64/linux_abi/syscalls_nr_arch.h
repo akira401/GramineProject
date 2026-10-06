@@ -119,6 +119,13 @@
 #ifndef __NR_set_mempolicy_home_node
 #define __NR_set_mempolicy_home_node 450
 #endif
-#ifndef __NR_syscalls
-#define __NR_syscalls 451
+#ifndef __NR_save
+#define __NR_save 451
 #endif
+#ifndef __NR_get_migration_time
+#define __NR_get_migration_time 452
+#endif
+#ifndef __NR_syscalls
+#define __NR_syscalls 453
+#endif
+

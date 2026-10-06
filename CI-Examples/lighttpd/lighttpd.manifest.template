@@ -33,4 +33,11 @@ sgx.trusted_files = [
   "file:lighttpd.conf",
   "file:lighttpd-generic.conf",
   "file:lighttpd-server.conf",
+  "file:cp.txt",
+  "file:rm.txt",
+]
+
+sgx.allowed_files = [
+  "file:cp.txt",
+  "file:rm.txt",
 ]

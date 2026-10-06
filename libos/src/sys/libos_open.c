@@ -77,6 +77,9 @@ ssize_t do_handle_write(struct libos_handle* hdl, const void* buf, size_t count)
 }
 
 long libos_syscall_write(int fd, const void* buf, size_t count) {
+
+   /* log_debug("libos_syscall_write boot."); */
+
     if (!is_user_memory_readable((void*)buf, count))
         return -EFAULT;
 

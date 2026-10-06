@@ -400,6 +400,10 @@ static inline void slab_free(SLAB_MGR mgr, void* obj) {
 
     unsigned char level = RAW_TO_LEVEL(obj);
 
+/*
+log_debug("[SLAB] free: obj=%p level=%d", obj, level);   // 追加
+*/
+
     if (level == (unsigned char)-1) {
         LARGE_MEM_OBJ mem = RAW_TO_OBJ(obj, LARGE_MEM_OBJ_TYPE);
 #ifdef DEBUG
@@ -408,6 +412,7 @@ static inline void slab_free(SLAB_MGR mgr, void* obj) {
 #ifdef ASAN
         asan_unpoison_region((uintptr_t)mem, mem->size + sizeof(LARGE_MEM_OBJ_TYPE));
 #endif
+
         system_free(mem, mem->size + sizeof(LARGE_MEM_OBJ_TYPE));
         return;
     }
